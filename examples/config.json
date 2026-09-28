@@ -1,0 +1,40 @@
+{
+  "severity_map": {
+    "default": "warning",
+    "HighErrorRate": "critical",
+    "DiskWillFillSoon": "high",
+    "TargetDown": "critical"
+  },
+  "runbooks": {
+    "HighErrorRate": "https://runbooks.example.com/high-error-rate",
+    "DiskWillFillSoon": "https://runbooks.example.com/disk-will-fill-soon",
+    "TargetDown": "https://runbooks.example.com/target-down"
+  },
+  "destinations": {
+    "pagerduty": {"type": "collector"},
+    "slack": {"type": "slack", "webhook_url": null},
+    "servicenow": {"type": "servicenow", "instance_url": null}
+  },
+  "rules": [
+    {
+      "name": "page-on-critical",
+      "match": {"severity": "critical"},
+      "destinations": ["pagerduty", "slack"]
+    },
+    {
+      "name": "infra-team",
+      "match": {"team": "infra"},
+      "destinations": ["slack"]
+    },
+    {
+      "name": "ticket-on-high",
+      "match": {"severity": "high"},
+      "destinations": ["servicenow"]
+    },
+    {
+      "name": "default",
+      "match": {},
+      "destinations": ["slack"]
+    }
+  ]
+}

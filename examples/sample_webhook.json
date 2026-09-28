@@ -1,0 +1,43 @@
+{
+  "alerts": [
+    {
+      "labels": {
+        "alertname": "HighErrorRate",
+        "service": "checkout",
+        "team": "payments",
+        "instance": "checkout-1:9090"
+      },
+      "annotations": {
+        "summary": "Error rate above 5% for checkout",
+        "description": "5xx rate has exceeded the SLO for 10 minutes"
+      },
+      "status": "firing",
+      "starts_at": "2026-09-27T14:03:00Z"
+    },
+    {
+      "labels": {
+        "instance": "checkout-1:9090",
+        "alertname": "HighErrorRate",
+        "team": "payments",
+        "service": "checkout"
+      },
+      "annotations": {
+        "summary": "Error rate above 5% for checkout"
+      },
+      "status": "firing",
+      "starts_at": "2026-09-27T14:03:00Z"
+    },
+    {
+      "labels": {
+        "alertname": "DiskWillFillSoon",
+        "team": "infra",
+        "instance": "db-2:9100"
+      },
+      "annotations": {
+        "description": "Root volume projected to fill within 4 hours"
+      },
+      "status": "firing",
+      "starts_at": "2026-09-27T14:05:00Z"
+    }
+  ]
+}
